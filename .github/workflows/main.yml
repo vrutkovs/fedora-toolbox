@@ -31,7 +31,7 @@ jobs:
         tags: ${{ steps.build-image.outputs.tags }}
         registry: ghcr.io/${{ github.repository_owner }}
         username: ${{ github.actor }}
-        password: ${{ env.REGISTRY_PASSWORD }}
+        password: ${{ github.token }}
         extra-args: |
           --disable-content-trust
 
