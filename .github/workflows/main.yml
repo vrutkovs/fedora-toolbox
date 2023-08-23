@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches:
+    - master
+  schedule:
+    - cron: '10 4 * * *'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Buildah Action
+      id: build-image
+      uses: redhat-actions/buildah-build@v2
+      with:
+        image: ghcr.io/vrutkovs/toolbox
+        tags: latest ${{ github.sha }}
+        containerfiles: ./Dockerfile
+
+    - name: Push To ghcr.io
+      id: push-to-ghcr
+      uses: redhat-actions/push-to-registry@v2
+      with:
+        image: ${{ steps.build-image.outputs.image }}
+        tags: ${{ steps.build-image.outputs.tags }}
+        registry: ghcr.io/${{ github.repository_owner }}
+        username: ${{ github.actor }}
+        password: ${{ env.REGISTRY_PASSWORD }}
+        extra-args: |
+          --disable-content-trust
+
+    - name: Echo outputs
+      run: |
+        echo "${{ toJSON(steps.push.outputs) }}"
