@@ -2,6 +2,7 @@ FROM registry.fedoraproject.org/fedora-toolbox:38
 
 RUN dnf update -y && \
   dnf copr enable -y atim/starship && \
+  dnf copr enable -y atim/lazygit && \
   dnf copr enable -y varlad/helix && \
   dnf groupinstall -y "Development tools" && \
   dnf install -y \
@@ -13,5 +14,6 @@ RUN dnf update -y && \
     jq \
     neovim \
     starship \
+    lazygit \
     helix && \
   dnf clean all
