@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/fedora-toolbox:38
+FROM registry.fedoraproject.org/fedora-toolbox:39
 
 RUN dnf update -y && \
   dnf copr enable -y atim/starship && \
