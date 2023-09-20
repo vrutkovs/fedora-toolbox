@@ -13,5 +13,6 @@ RUN dnf update -y && \
     jq \
     neovim \
     starship \
-    lazygit && \
-  dnf clean all
+    lazygit \
+    fira-code-fonts \
+    && dnf clean all
