@@ -1,18 +1,22 @@
-FROM registry.fedoraproject.org/fedora-toolbox:39
+FROM registry.fedoraproject.org/fedora-toolbox:42
 
 RUN dnf update -y && \
-  dnf copr enable -y atim/starship && \
-  dnf copr enable -y atim/lazygit && \
-  dnf groupinstall -y "Development tools" && \
-  dnf install -y \
+    dnf copr enable -y atim/starship && \
+    dnf copr enable -y atim/lazygit && \
+    dnf install -y \
     make \
     golang \
     zsh \
     openssl \
     ansible \
     jq \
-    neovim \
     starship \
     lazygit \
     fira-code-fonts \
+    cargo \
+    rust \
+    fzf \
+    helix \
+    golang-x-tools-gopls \
+    chromium-browser \
     && dnf clean all
