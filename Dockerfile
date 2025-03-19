@@ -19,4 +19,5 @@ RUN dnf update -y && \
     helix \
     golang-x-tools-gopls \
     chromium-browser \
+    delta \
     && dnf clean all
