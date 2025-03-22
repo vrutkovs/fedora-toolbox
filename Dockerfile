@@ -21,4 +21,5 @@ RUN dnf update -y && \
     golang-x-tools-gopls \
     chromium-browser \
     delta \
+    nc \
     && dnf clean all
