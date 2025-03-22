@@ -9,6 +9,7 @@ RUN dnf update -y && \
     zsh \
     openssl \
     ansible \
+    python3-ansible-lint \
     jq \
     starship \
     lazygit \
